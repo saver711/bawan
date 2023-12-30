@@ -3,6 +3,7 @@ import { request } from "./api/axiox-util"
 import { StrapiWrapper } from "./api/models/strapi-wrapper"
 import { StrapiError } from "./api/models/strapi-error"
 import { AxiosResponse } from "axios"
+import { Slider } from "./shared/cpmponents/slider/slider"
 
 type Blogger = {
   id: number
@@ -13,24 +14,26 @@ type Blogger = {
 
 function App() {
 
-  const {
-    data: bloggerData,
-    error,
-    isLoading,
-  } = useQuery<AxiosResponse<StrapiWrapper<Blogger>, any>, StrapiError>({
-    queryKey: ["home"],
-    queryFn: () =>
-      request.get<StrapiWrapper<Blogger>>("bloggers/1?populate=image"),
-  })
+  // const {
+  //   data: bloggerData,
+  //   error,
+  //   isLoading,
+  // } = useQuery<AxiosResponse<StrapiWrapper<Blogger>, any>, StrapiError>({
+  //   queryKey: ["home"],
+  //   queryFn: () =>
+  //     request.get<StrapiWrapper<Blogger>>("bloggers/1?populate=image"),
+  // })
 
-  if (isLoading) {
-    return <h1>loading...</h1>
-  }
-  if (error) {
-    return <h1>{error.response.data.error.message}</h1>
-  }
+  // if (isLoading) {
+  //   return <h1>loading...</h1>
+  // }
+  // if (error) {
+  //   return <h1>{error.message || error.response.data.error.message}</h1>
+  // }
 
-  return <>{bloggerData && bloggerData.data.data.attributes.name}</>
+  // return <>{bloggerData && bloggerData.data.data.attributes.name}</>
+
+  return <Slider />
 }
 
 export default App

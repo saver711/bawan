@@ -18,4 +18,5 @@ export type StrapiError = {
       }
     }
   }
+  message: string
 }
